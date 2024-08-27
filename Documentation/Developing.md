@@ -1,29 +1,18 @@
 
-# Developing PyNest2D <br> In Editable Mode
+# Developing PyNest2DLE In Editable Mode
 
-<br>
-
-You can use your local development repository downsteam <br>
-by adding it as an editable mode package, which also means <br>
-that you can test it in a consuming project without creating <br>
-a new package for this project every time.
-
+You can use your local development repository downsteam by adding it as an editable mode package, which also means that you can test it in a consuming project without creating a new package for this project every time.
 
 ```shell
 conan editable add . \
-    pynest2d/<version>@<username>/<channel>
+    pynest2dle/<version>@<username>/<channel>
 ```
 
-<br>
-
-Then in your downsteam project's ( Cura ) root directory <br>
-override the package with your editable mode package.  
+Then in your downsteam project's (such as CuraLE) root directory, override the package with your editable mode package.
 
 ```shell
 conan install .     \
     -build=missing  \
     --update        \
-    --require-override=pynest2d/<version>@<username>/<channel>
+    --require-override=pynest2dle/<version>@<username>/<channel>
 ```
-
-<br>

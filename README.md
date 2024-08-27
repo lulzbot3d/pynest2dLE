@@ -1,65 +1,40 @@
+# PyNest2DLE
 
-<br>
-
-<div align = center>
-
-
-[![Badge License]][License]   
 [![Badge Conan]][Conan]
+[![Badge Size]][Size]
+[![Badge License]][License]
 
-[![Badge Contributors]][Contributors]   
-[![Badge Size]][#]
-
-<br>
-<br>
-
-# PyNest2D
-
-*CPython bindings for **[LibNest2D]**, a library <br>
+*CPython bindings for **[LibNest2D]**, a library
 to pack 2D polygons into a small space.*
 
-
-<br>
-<br>
-
-[![Button Requirements]][Requirements]   
+[![Button Requirements]][Requirements]
 [![Button Usage]][Usage]
 
-[![Button Building]][Building]   
-[![Button Packaging]][Packaging]   
+[![Button Building]][Building]
+[![Button Packaging]][Packaging]
 [![Button Developing]][Developing]
-
-</div>
-
-<br>
-<br>
 
 ## Details
 
-We may use as of yet unmerged work done on <br>
-our own **[Fork]** of libnest2d whenever convenient.
+> Note:  
+> The following is regarding the UltiMaker repository, this may not all apply to the code being used in this LulzBot fork.
+
+We may use as of yet unmerged work done on our own **[Fork]** of libnest2d whenever convenient.
 
 Libnest2d implements the 2D bin packing problem.
 
-The objective of this repository is to allow libnest2d <br>
-functions to be called from Python using Numpy. 
+The objective of this repository is to allow libnest2d functions to be called from Python using Numpy.
 
-To this end, there is a competing <br>
-**[Solution][Nest2D]** to provide Python bindings.
+To this end, there is a competing **[solution][Nest2D]** to provide Python bindings.
 
-However it doesn't expose enough of the configurability <br>
-that Cura requires and its bindings aren't as transparent.
-
-<br>
-
+However it doesn't expose enough of the configurability that Cura requires and its bindings aren't as transparent.
 
 <!----------------------------------------------------------------------------->
 
-[Contributors]: https://github.com/Ultimaker/pynest2d/graphs/contributors
 [LibNest2D]: https://github.com/tamasmeszaros/libnest2d
 [Nest2D]: https://github.com/markfink/nest2D
-[Conan]: https://github.com/Ultimaker/pynest2d/actions/workflows/conan-package.yml
-[Fork]: https://github.com/Ultimaker/libnest2d
+[Conan]: https://github.com/lulzbot3d/pynest2dLE/actions/workflows/conan-package.yml
+[Fork]: https://github.com/lulzbot3d/libnest2dLE
 
 [Requirements]: Documentation/System%20Requirements.md
 [Developing]: Documentation/Developing.md
@@ -67,16 +42,13 @@ that Cura requires and its bindings aren't as transparent.
 [Building]: Documentation/Building.md
 [Usage]: Documentation/Usage.md
 [License]: LICENSE
-[#]: #
-
+[Size]: https://github.com/lulzbot3d/pynest2dLE
 
 <!---------------------------------[ Badges ]---------------------------------->
 
-[Badge Contributors]: https://img.shields.io/github/contributors/ultimaker/pynest2d?style=for-the-badge&logoColor=white&labelColor=db5e8a&color=ab4a6c&logo=GitHub
 [Badge License]: https://img.shields.io/badge/License-LGPL3-336887.svg?style=for-the-badge&labelColor=458cb5&logoColor=white&logo=GNU
-[Badge Conan]: https://img.shields.io/github/workflow/status/Ultimaker/pynest2d/conan-package?style=for-the-badge&logoColor=white&labelColor=6185aa&color=4c6987&logo=Conan&label=Conan%20Package
-[Badge Size]: https://img.shields.io/github/repo-size/ultimaker/pynest2d?style=for-the-badge&logoColor=white&labelColor=629944&color=446a30&logo=GoogleAnalytics
-
+[Badge Conan]: https://img.shields.io/github/workflow/status/lulzbot3d/pynest2dLE/conan-package?style=for-the-badge&logoColor=white&labelColor=6185aa&color=4c6987&logo=Conan&label=Conan%20Package
+[Badge Size]: https://img.shields.io/github/repo-size/lulzbot3d/pynest2dLE?style=for-the-badge&logoColor=white&labelColor=629944&color=446a30&logo=GoogleAnalytics
 
 <!---------------------------------[ Buttons ]--------------------------------->
 

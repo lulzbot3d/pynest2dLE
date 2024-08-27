@@ -3,21 +3,14 @@
 
 *An example on how to arrange multiple shapes in a volume.*
 
-<br>
-
-> **Note** <br>
-> These bindings stay close to the original function signatures. <br>
-> For full documentation, see **[LibNest2D]**.
-
-
-
-<br>
+> **Note**  
+> These bindings stay close to the original function signatures. For full documentation, see **[LibNest2D]**.
 
 ```Python
 from pynest2d import *
 
 
-# 1000 x 1000 bounding volume centered around 
+# 1000 x 1000 bounding volume centered around
 # 0 in which the items must be arranged.
 
 volume = Box(1000,1000)
@@ -74,9 +67,6 @@ transformed_i.vertex(0).x()  #  18
 transformed_i.vertex(0).y()  #  96
 long_thin_triangle.rotation()  #  4.71238898038469
 ```
-
-<br>
-
 
 <!----------------------------------------------------------------------------->
 

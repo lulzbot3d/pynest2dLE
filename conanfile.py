@@ -16,11 +16,11 @@ from conan.tools.scm import Version
 required_conan_version = ">=1.56.0"
 
 
-class PyNest2DConan(ConanFile):
-    name = "pynest2d"
+class PyNest2DLEConan(ConanFile):
+    name = "pynest2dle"
     license = "LGPL-3.0"
-    author = "Ultimaker B.V."
-    url = "https://github.com/Ultimaker/pynest2d"
+    author = "Ultimaker B.V., FAME3D LLC."
+    url = "https://github.com/lulzbot3d/pynest2dLE"
     description = "Python bindings for libnest2d"
     topics = ("conan", "cura", "prusaslicer", "nesting", "c++", "bin packaging", "python", "sip")
     settings = "os", "compiler", "build_type", "arch"
@@ -28,7 +28,7 @@ class PyNest2DConan(ConanFile):
     exports = "LICENSE*"
     generators = "CMakeDeps", "VirtualBuildEnv", "VirtualRunEnv"
 
-    python_requires = "pyprojecttoolchain/[>=0.1.7]@ultimaker/stable", "sipbuildtool/[>=0.2.4]@ultimaker/stable"
+    python_requires = "pyprojecttoolchain/[>=0.1.7]@lulzbot/stable", "sipbuildtool/[>=0.2.4]@lulzbot/stable"
 
     options = {
         "shared": [True, False],
@@ -45,7 +45,7 @@ class PyNest2DConan(ConanFile):
 
     def set_version(self):
         if not self.version:
-            self.version = "5.4.0-alpha"
+            self.version = "5.3.0"
 
     @property
     def _min_cppstd(self):
@@ -81,8 +81,8 @@ class PyNest2DConan(ConanFile):
                 )
 
     def build_requirements(self):
-        self.test_requires("standardprojectsettings/[>=0.1.0]@ultimaker/stable")
-        self.test_requires("sipbuildtool/[>=0.2.4]@ultimaker/stable")
+        self.test_requires("standardprojectsettings/[>=0.1.0]@lulzbot/stable")
+        self.test_requires("sipbuildtool/[>=0.2.4]@lulzbot/stable")
 
     def config_options(self):
         if self.settings.os == "Windows":
