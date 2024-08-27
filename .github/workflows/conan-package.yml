@@ -39,7 +39,7 @@ jobs:
         secrets: inherit
 
     conan-package-create-windows:
-        if: ${{ (github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'master' || needs.conan-recipe-version.outputs.is_release_branch)) }}
+        if: ${{ (github.event_name == 'push' && (github.ref_name == 'main' || needs.conan-recipe-version.outputs.is_release_branch)) }}
         needs: [ conan-recipe-version, conan-package-export ]
 
         uses: lulzbot3d/cura-le-workflows/.github/workflows/conan-package-create-windows.yml@main
@@ -48,7 +48,7 @@ jobs:
         secrets: inherit
 
     conan-package-create-macos:
-        if: ${{ (github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'master' || needs.conan-recipe-version.outputs.is_release_branch)) }}
+        if: ${{ (github.event_name == 'push' && (github.ref_name == 'main' || needs.conan-recipe-version.outputs.is_release_branch)) }}
         needs: [ conan-recipe-version, conan-package-export ]
 
         uses: lulzbot3d/cura-le-workflows/.github/workflows/conan-package-create-macos.yml@main
@@ -57,7 +57,7 @@ jobs:
         secrets: inherit
 
     conan-package-create-linux:
-        if: ${{ (github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'master' || needs.conan-recipe-version.outputs.is_release_branch)) }}
+        if: ${{ (github.event_name == 'push' && (github.ref_name == 'main' || needs.conan-recipe-version.outputs.is_release_branch)) }}
         needs: [ conan-recipe-version, conan-package-export ]
 
         uses: lulzbot3d/cura-le-workflows/.github/workflows/conan-package-create-linux.yml@main

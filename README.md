@@ -9,7 +9,6 @@ to pack 2D polygons into a small space.*
 
 [![Button Requirements]][Requirements]
 [![Button Usage]][Usage]
-
 [![Button Building]][Building]
 [![Button Packaging]][Packaging]
 [![Button Developing]][Developing]
