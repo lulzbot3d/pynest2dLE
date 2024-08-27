@@ -96,6 +96,8 @@ class PyNest2DLEConan(ConanFile):
     def generate(self):
         pp = self.python_requires["pyprojecttoolchain"].module.PyProjectToolchain(self)
         pp.blocks["tool_sip_project"].values["sip_files_dir"] = str(Path("python").as_posix())
+        pp.blocks["tool_sip_bindings"].values["name"] = "pynest2d"
+        pp.blocks["tool_sip_metadata"].values["name"] = "pynest2d"
         pp.blocks.remove("extra_sources")
         pp.generate()
 
