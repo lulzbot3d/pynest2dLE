@@ -67,7 +67,7 @@ class PyNest2DLEConan(ConanFile):
 
     def requirements(self):
         self.requires("nest2dle/5.3.0")
-        self.requires("cpython/3.12.2")
+        self.requires("cpython/3.10.4")
 
     def validate(self):
         if self.settings.compiler.cppstd:
