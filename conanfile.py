@@ -66,7 +66,7 @@ class PyNest2DLEConan(ConanFile):
         copy(self, "*", path.join(self.recipe_folder, "python"), path.join(self.export_sources_folder, "python"))
 
     def requirements(self):
-        self.requires("nest2dle/5.3.0")
+        self.requires("nest2d/5.3.0")
         self.requires("cpython/3.10.4")
 
     def validate(self):
