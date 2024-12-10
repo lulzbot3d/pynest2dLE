@@ -6,14 +6,13 @@ from os import path
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
 from conan.tools.build import check_min_cppstd
-from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout
-from conan.tools.env import VirtualBuildEnv
-from conan.tools.files import copy, mkdir
+from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout, CMakeDeps
+from conan.tools.env import VirtualBuildEnv, VirtualRunEnv
+from conan.tools.files import copy, mkdir, update_conandata
 from conan.tools.microsoft import check_min_vs, is_msvc, is_msvc_static_runtime
-from conan.tools.scm import Version
+from conan.tools.scm import Version, Git
 
-
-required_conan_version = ">=1.56.0"
+required_conan_version = ">=2.7.0"
 
 
 class PyNest2DLEConan(ConanFile):
@@ -24,9 +23,8 @@ class PyNest2DLEConan(ConanFile):
     description = "Python bindings for libnest2d"
     topics = ("conan", "cura", "prusaslicer", "nesting", "c++", "bin packaging", "python", "sip")
     settings = "os", "compiler", "build_type", "arch"
-    revision_mode = "scm"
     exports = "LICENSE*"
-    generators = "CMakeDeps", "VirtualBuildEnv", "VirtualRunEnv"
+    package_type = "library"
 
     python_requires = "pyprojecttoolchain/[>=0.1.7]@lulzbot/stable", "sipbuildtool/[>=0.2.4]@lulzbot/stable"
 
@@ -45,7 +43,11 @@ class PyNest2DLEConan(ConanFile):
 
     def set_version(self):
         if not self.version:
-            self.version = "5.3.0"
+            self.version = self.conan_data["version"]
+
+    def export(self):
+        git = Git(self)
+        update_conandata(self, {"version": self.version, "commit": git.get_commit()})
 
     @property
     def _min_cppstd(self):
@@ -66,7 +68,8 @@ class PyNest2DLEConan(ConanFile):
         copy(self, "*", path.join(self.recipe_folder, "python"), path.join(self.export_sources_folder, "python"))
 
     def requirements(self):
-        self.requires("nest2d/5.3.0")
+        for req in self.conan_data["requirements"]:
+            self.requires(req)
         self.requires("cpython/3.10.4")
 
     def validate(self):
@@ -91,15 +94,18 @@ class PyNest2DLEConan(ConanFile):
     def configure(self):
         if self.options.shared:
             self.options.rm_safe("fPIC")
-        self.options["cpython"].shared = True
 
     def generate(self):
         pp = self.python_requires["pyprojecttoolchain"].module.PyProjectToolchain(self)
         pp.blocks["tool_sip_project"].values["sip_files_dir"] = str(Path("python").as_posix())
         pp.blocks["tool_sip_bindings"].values["name"] = "pynest2d"
         pp.blocks["tool_sip_metadata"].values["name"] = "pynest2d"
+        print(pp.blocks["tool_sip_bindings"].context())
         pp.blocks.remove("extra_sources")
         pp.generate()
+
+        tc = CMakeDeps(self)
+        tc.generate()
 
         tc = CMakeToolchain(self)
         if is_msvc(self):
@@ -116,18 +122,27 @@ class PyNest2DLEConan(ConanFile):
         tc.generate()
 
         vb = VirtualBuildEnv(self)
-        vb.generate(scope="build")
+        vb.generate()
+
+        vr = VirtualRunEnv(self)
+        vr.generate(scope="build")
 
         # Generate the Source code from SIP
-        sip = self.python_requires["sipbuildtool"].module.SipBuildTool(self)
-        sip.configure()
-        sip.build()
+        tc = self.python_requires["sipbuildtool"].module.SipBuildTool(self)
+        tc.configure()
+        tc.build()
 
     def layout(self):
         cmake_layout(self)
 
         if self.settings.os in ["Linux", "FreeBSD", "Macos"]:
             self.cpp.package.system_libs = ["pthread"]
+
+        self.cpp.package.lib = ["pynest2d"]
+        self.cpp.package.libdirs = ["lib"]
+
+        self.layouts.build.runenv_info.prepend_path("PYTHONPATH", ".")
+        self.layouts.package.runenv_info.prepend_path("PYTHONPATH", "lib")
 
     def build(self):
         cmake = CMake(self)
@@ -136,15 +151,8 @@ class PyNest2DLEConan(ConanFile):
 
     def package(self):
         copy(self, pattern="LICENSE*", dst="licenses", src=self.source_folder)
-        for ext in ("*.pyi", "*.so", "*.lib", "*.a", "*.pyd"):
-            copy(self, ext, src = self.build_folder, dst = path.join(self.package_folder, "lib"), keep_path = False)
-
-        for ext in ("*.dll", "*.so", "*.dylib"):
-            copy(self, ext, src = self.build_folder, dst = path.join(self.package_folder, "bin"), keep_path = False)
+        for ext in ("*.pyi", "*.so", "*.lib", "*.a", "*.pyd", "*.dll", "*.dylib"):
+            copy(self, ext, src=self.build_folder, dst=path.join(self.package_folder, "lib"), keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libdirs = [ os.path.join(self.package_folder, "lib")]
-        if self.in_local_cache:
-            self.runenv_info.append_path("PYTHONPATH", os.path.join(self.package_folder, "lib"))
-        else:
-            self.runenv_info.append_path("PYTHONPATH", self.build_folder)
+        self.conf_info.define("user.pynest2d:pythonpath", os.path.join(self.package_folder, "lib"))

@@ -46,9 +46,9 @@ However it doesn't expose enough of the configurability that Cura requires and i
 
 <!---------------------------------[ Badges ]---------------------------------->
 
-[Badge Conan]: https://img.shields.io/github/actions/workflow/status/lulzbot3d/pynest2dLE/conan-package.yml?style=for-the-badge&color=C1D82F&labelColor=788814&logoColor=white&logo=conan&label=Conan%20Package
-[Badge Size]: https://img.shields.io/github/repo-size/lulzbot3d/pynest2dLE?style=for-the-badge&color=CCCCCC&labelColor=666666&logoColor=white&logo=GoogleAnalytics
-[Badge License]: https://img.shields.io/badge/License-LGPL3-336887.svg?style=for-the-badge&color=A32D2A&labelColor=511615&logoColor=white&logo=GNU
+[Badge Conan]: https://img.shields.io/github/actions/workflow/status/lulzbot3d/pynest2dLE/conan-package.yml?style=for-the-badge&logoColor=white&logo=conan&label=Conan%20Package
+[Badge Size]: https://img.shields.io/github/repo-size/lulzbot3d/pynest2dLE?style=for-the-badge&logoColor=white&logo=GoogleAnalytics
+[Badge License]: https://img.shields.io/github/license/lulzbot3d/pynest2dLE?style=for-the-badge&logoColor=white&logo=GNU
 
 <!---------------------------------[ Buttons ]--------------------------------->
 
