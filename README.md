@@ -46,9 +46,9 @@ However it doesn't expose enough of the configurability that Cura requires and i
 
 <!---------------------------------[ Badges ]---------------------------------->
 
-[Badge Conan]: https://img.shields.io/github/actions/workflow/status/lulzbot3d/pynest2dLE/conan-package.yml?style=for-the-badge&color=C1D82F&labelColor=788814&logoColor=white&logo=conan&label=Conan%20Package
-[Badge Size]: https://img.shields.io/github/repo-size/lulzbot3d/pynest2dLE?style=for-the-badge&color=CCCCCC&labelColor=666666&logoColor=white&logo=GoogleAnalytics
-[Badge License]: https://img.shields.io/badge/License-LGPL3-336887.svg?style=for-the-badge&color=A32D2A&labelColor=511615&logoColor=white&logo=GNU
+[Badge Conan]: https://img.shields.io/github/actions/workflow/status/lulzbot3d/pynest2dLE/conan-package.yml?style=for-the-badge&logoColor=white&logo=conan&label=Conan%20Package
+[Badge Size]: https://img.shields.io/github/repo-size/lulzbot3d/pynest2dLE?style=for-the-badge&logoColor=white&logo=GoogleAnalytics
+[Badge License]: https://img.shields.io/github/license/lulzbot3d/pyArcusLE?style=for-the-badge&logoColor=white&logo=GNU
 
 <!---------------------------------[ Buttons ]--------------------------------->
 
@@ -57,4 +57,3 @@ However it doesn't expose enough of the configurability that Cura requires and i
 [Button Packaging]: https://img.shields.io/badge/Packaging-db5e8a?style=for-the-badge&logoColor=white&logo=GitLFS
 [Button Building]: https://img.shields.io/badge/Building-458cb5?style=for-the-badge&logoColor=white&logo=CurseForge
 [Button Usage]: https://img.shields.io/badge/Usage-629944?style=for-the-badge&logoColor=white&logo=GitBook
-
