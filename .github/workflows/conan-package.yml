@@ -20,5 +20,5 @@ on:
 
 jobs:
   conan-package:
-    uses: lulzbot/CuraLE_Workflows/.github/workflows/conan-package.yml@main
+    uses: lulzbot3d/CuraLE_Workflows/.github/workflows/conan-package.yml@main
     secrets: inherit
