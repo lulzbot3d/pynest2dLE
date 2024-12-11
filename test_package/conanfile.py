@@ -30,4 +30,4 @@ class PyNest2DLETestConan(ConanFile):
             test_buf = StringIO()
             self.run(f"python test.py", env="conanrun", stdout=test_buf, scope="run")
             if "True" not in test_buf.getvalue():
-                raise ConanException("pynest2dle wasn't build correctly!")
+                raise ConanException("pynest2d wasn't build correctly!")

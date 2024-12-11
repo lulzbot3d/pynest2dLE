@@ -1,13 +1,13 @@
 
 # Packaging
 
-*Creating a new **PyNest2DLE** Conan package so it can be used in **CuraLE** and **UraniumLE**.*
+*Creating a new **PyNest2D** Conan package so it can be used in **CuraLE** and **UraniumLE**.*
 
 Run the following
 
 ```shell
 conan create .                                \
-    pynest2dle/<version>@<username>/<channel> \
+    pynest2d/<version>@<username>/<channel> \
     --build=missing                           \
     --update
 ```
@@ -26,5 +26,5 @@ You can also specify the override at the commandline, to use the newly created p
 conan install .     \
     -build=missing  \ 
     --update        \
-    --require-override=pynest2dle/<version>@<username>/<channel>
+    --require-override=pynest2d/<version>@<username>/<channel>
 ```

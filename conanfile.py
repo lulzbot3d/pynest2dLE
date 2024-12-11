@@ -16,7 +16,7 @@ required_conan_version = ">=2.7.0"
 
 
 class PyNest2DLEConan(ConanFile):
-    name = "pynest2dle"
+    name = "pynest2d"
     license = "LGPL-3.0"
     author = "Ultimaker B.V., FAME3D LLC."
     url = "https://github.com/lulzbot3d/pynest2dLE"

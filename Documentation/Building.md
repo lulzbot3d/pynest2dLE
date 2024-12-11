@@ -36,7 +36,7 @@ cd pynest2dLE
 
 ```shell
 conan install . --build=missing --update
-# optional for a specific version: conan install . pynest2dle/<version>@<user>/<channel> --build=missing --update
+# optional for a specific version: conan install . pynest2d/<version>@<user>/<channel> --build=missing --update
 conan build .
 ```
 
