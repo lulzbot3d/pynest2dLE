@@ -26,7 +26,7 @@ class PyNest2DConan(ConanFile):
     exports = "LICENSE*"
     package_type = "library"
 
-    python_requires = "pyprojecttoolchain/[>=0.2.0]@ultimaker/stable", "sipbuildtool/[>=0.3.0]@ultimaker/stable"
+    python_requires = "pyprojecttoolchain/[>=0.2.0]", "sipbuildtool/[>=0.3.0]"
 
     options = {
         "shared": [True, False],
@@ -88,8 +88,8 @@ class PyNest2DConan(ConanFile):
                 )
 
     def build_requirements(self):
-        self.test_requires("standardprojectsettings/[>=0.2.0]@ultimaker/stable")
-        self.test_requires("sipbuildtool/[>=0.3.0]@ultimaker/stable")
+        self.test_requires("standardprojectsettings/[>=0.2.0]")
+        self.test_requires("sipbuildtool/[>=0.3.0]")
 
     def config_options(self):
         if self.settings.os == "Windows":
